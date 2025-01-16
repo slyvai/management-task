@@ -68,3 +68,17 @@
 .container > h1 {
   font-size: 50px;
 }
+
+@media screen and (max-width: 600px) {
+  .container > h1 {
+    font-size: 30px;
+  }
+  .form-container {
+    width: 100%;
+  }
+
+  .post-list {
+    width: 95%;
+  }
+  
+}

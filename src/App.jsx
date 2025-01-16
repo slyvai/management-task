@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import PostForm from './component/PostForm'
 import PostList from './component/PostList'
-import PostItem from './component/PostItem'
 
 function App() {
   const [post, setPost] = useState([])
@@ -12,13 +11,18 @@ function App() {
   }, [])
 
   const fetchPosts = async () => {
+    try {
     const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
     setPost(response.data)
+  } catch (error) {
+    console.log("failed to fetch posts", error)
+  }
   }
 
-  const addPost = (post) => {
-    setPost([...post])
+  const addPost = (newPost) => {
+    setPost((prevPosts) => [newPost, ...prevPosts]);
   }
+
 
   return (
     <>
